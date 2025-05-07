@@ -1,0 +1,22 @@
+
+version: '3'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    networks: 
+      - devops
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8081:80"
+    depends_on:
+      - backend
+    networks: 
+      - devops
+
+networks:
+  devops:
+    driver: bridge
